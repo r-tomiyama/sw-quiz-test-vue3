@@ -1,17 +1,16 @@
 <template>
-  <div>
+  <div class="quiz">
     <h2>【Q{{ index + 1 }}】{{ TITLE[id] }}: {{ question.text }}</h2>
     <div>
       <form>
         <label>
-          回答：
-          <select @change="change">
+          <select @change="change" style="width:90%;">
             <template v-for="option in question.options" v-bind:key="option">
               <option :value="option">{{ option }}</option>
             </template>
           </select>
-          {{ result }}
         </label>
+        <p>{{ result }}</p>
       </form>
     </div>
   </div>
@@ -70,3 +69,12 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+.quiz {
+  width: 30%;
+  padding: 1em 0.5em;
+  margin: 1em 0;
+  background-color: #efefef;
+}
+</style>

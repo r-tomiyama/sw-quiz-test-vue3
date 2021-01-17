@@ -3,17 +3,19 @@
   <p>
     {{ answerStore.sumOfQuestions }}問中 {{ answerStore.sumOfRights }} 問正解
   </p>
-  <template
-    v-for="(question, key, index) in answerStore.questionList"
-    v-bind:key="key"
-  >
-    <Question
-      :id="key"
-      :index="index"
-      :question="question"
-      @handleChange="answerStore.setAnswer"
-    />
-  </template>
+  <div class="quiz-content">
+    <template
+      v-for="(question, key, index) in answerStore.questionList"
+      v-bind:key="key"
+    >
+      <Question
+        :id="key"
+        :index="index"
+        :question="question"
+        @handleChange="answerStore.setAnswer"
+      />
+    </template>
+  </div>
 </template>
 
 <script lang="ts">
@@ -35,3 +37,12 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+.quiz-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 5em;
+}
+</style>
